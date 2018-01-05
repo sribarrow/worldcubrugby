@@ -1,0 +1,61 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 01-Jan-2018, 20:32:01
+    Author     : sripriya
+*/
+
+$small-device: 350px;
+$medium-device: 768px;
+$large-device: 1100px;
+
+@mixin atSmall {
+  @media (min-width: #{$small-device}) and (max-width: #{$medium-device - 1px}) {
+    @content;
+  }
+}
+
+@mixin atMedium {
+  @media (min-width: #{$medium-device}) {
+    @content;
+  }
+}
+
+@mixin atLarge {
+  @media (min-width: #{$large-device}) {
+    @content;
+  }
+}
+
+@mixin col($cnt,$gap){
+
+  -webkit-column-count: $cnt;
+  -moz-column-count: $cnt;
+  column-count: $cnt;
+  -moz-column-gap: $gap;
+  -webkit-column-gap: $gap;
+  column-gap: $gap;
+
+}
+
+@mixin links($link, $visited, $hover, $active) {
+    & {
+        color: $link;
+        &:visited {
+            color: $visited;
+        }
+        
+        &:hover {
+            color: $hover;
+        }
+        
+        &:active, &:focus {
+            color: $active;
+        }
+    }
+}
+
+
