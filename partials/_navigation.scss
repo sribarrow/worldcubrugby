@@ -8,12 +8,13 @@ and open the template in the editor.
     Author     : sripriya
 */
 
+
 #navigation{
     background-color: $bg-black;
     border: 3px solid $border-yellow;
     margin-top: 20px;
     text-shadow: 0.1em 0.1em $bg-black;
-    height:210px;
+    height:260px;
     
     @include atMedium{
         height: 60px;
@@ -23,46 +24,59 @@ and open the template in the editor.
 
 #nav{
     list-style: none;
+    
         
     ul{
         margin:0;
         padding:0;
         width: auto;
         
+        
         @include atMedium{
             display:inline-block;
         }
-       
-        
+
     }
     
     li{
         font-size: 24px;
-        color:#817b7b;
         float:left;
         position: relative;
         height: 50px;
-        width: 350px;
+        width:350px;
+        
         
         @include atMedium{
-            width:150px;
+            width:120px;
         
         }
         
-
     
     }
     
-    a:link, nav a:active nav a:visited{
+    li:last-child { 
+        
+        @include atLarge{
+            float: right; 
+        }
+    
+    }
+    
+    a:link,a:visited{
         display: block;
         color: $white;
         text-decoration:none;
     
     }
-     
+    
     a:hover{
         color: lightblue;
     
     }
 
+}
+
+
+.currentpage{
+    color: lightblue ! important;
 }

@@ -1,72 +1,99 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of ShopModel
  *
  * @author sripriya
  * 
  */
-require ("Entities/ShopEntity.php")
-class ShopModel {
-    //put your code here
-    function GetShirtSizes(){
-        require 'Credentials.php';
+
+class ShopModel extends Credentials{
+    
+    protected function validateUser($usr, $pwd){
+         //$query = "SELECT * FROM `users` WHERE username='$username' and password='".md5($password)."'";
+        $sql = "SELECT * FROM users WHERE email='" . $usr . "' and password='" . $pwd . "'";
+        echo $sql;
+        $result = $this->connectDb()->query($sql);
+       
+            return $result;
         
-        // Open DB and fetch data
-        
-        mysql_connect($host, $user, $password) or die(mysql_error());
-        mysql_select_db($database);
-        $result = mysql_query("select distinct size from shopitems");
-        
-        $sizes = array();
-        
-        //Add database values to array
-        while($row = mysql_fetch_array($result)){
-            array_push($sizes,$row[0]);
         }
+    
+    
+    protected function getUniqueSizes(){
+        $sql= "select distinct size from shopitems";
+        $result = $this->connectDb()->query($sql);
         
-        //Close connection
-        
-        mysql_close();
-        return $sizes;
+        $numRows = $result->num_rows;
+        if($numRows>0){
+            while($row = $result->fetch_assoc()){
+                $data[] = $row;
+            }
+            return $data;
+        }
     }
     
-    function GetShirtsBySize($size){
-        require 'Credentials.php';
-        
-        // Open DB and fetch data
-        
-        mysql_connect($host, $user, $password) or die(mysql_error());
-        mysql_select_db($database);
-        
-        $query = "select * from shopitems where size like '$size'";
-        $result = mysql_query($query) or die(mysql_error());
-        $coffeeArray = array();
-        
-        //Get data from database
-        while($row =  mysql_fetch_array($result)){
-            $name= $row[1];
-            $type=$row[2];
-            $price=$row[3];
-            $size=$row[4];
-            $country=$row[5];
-            $image=$row[6];
-            $description=$row[7];
-            
-            //create new entity instance
-            $shop = new ShopEntity(-1,$name, $type, $price,$size,$country, $image,$description);
-            array_push($shopArray,$shop);
-     
+     protected function getItemsBySize($size){
+        $sql= "select * from shopitems where size LIKE '$size'";
+        //echo $sql;
+        $result = $this->connectDb()->query($sql);
+        $numRows = $result->num_rows;
+        if($numRows>0){
+            while($row = $result->fetch_assoc()){
+                $data[] = $row;
+            }
+            return $data;
+        }
+    }
+    
+    protected function getUniqueDates(){
+         $sql= "select distinct matchDate, fixtureType from fixtures";
+        //echo $sql;
+        $result = $this->connectDb()->query($sql);
+        $numRows = $result->num_rows;
+        if($numRows>0){
+            while($row = $result->fetch_assoc()){
+                $data[] = $row;
+            }
+            return $data;
         }
         
-           //Close
-            mysql_close();
-            return $shopArray;
     }
+    
+    protected function getLatestposts(){
+         $sql= "SELECT * FROM `posts` 
+            order by insertedon desc 
+            LIMIT 10";
+        //echo $sql;
+        $result = $this->connectDb()->query($sql);
+        $numRows = $result->num_rows;
+        if($numRows>0){
+            while($row = $result->fetch_assoc()){
+                $data[] = $row;
+            }
+            return $data;
+        }
+        
+    }
+    
+    protected function getAllFixtures(){
+         $sql= "SELECT distinct `matchDate`, `fixtureType`, `countryA`, `countryB`, fields.fieldName, a.flag as flagA, b.flag as flagB 
+            FROM `fixtures`, country a, country b, fields
+            WHERE
+            fixtures.countryA = a.countryName
+            AND fixtures.countryB = b.countryName
+            AND fields.fieldId = fixtures.fieldId
+            order by matchDate";
+        //echo $sql;
+        $result = $this->connectDb()->query($sql);
+        $numRows = $result->num_rows;
+        if($numRows>0){
+            while($row = $result->fetch_assoc()){
+                $data[] = $row;
+                //echo $row;
+            }
+            return $data;
+        }
+    }
+    
+   
 }

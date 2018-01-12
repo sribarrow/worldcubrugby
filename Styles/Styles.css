@@ -73,7 +73,7 @@ and open the template in the editor.
   text-align: center;
   background-color: #333;
   border: 5px solid border-red;
-  height: 12.5rem;
+  height: 10.5rem;
 }
 
 /* line 18, C:/wamp64/www/worldcuprugby/partials/_banner.scss */
@@ -89,10 +89,11 @@ and open the template in the editor.
   .banner-content {
     top: 2.1875rem;
     font-size: 2.5rem;
+    height: 12.5rem;
   }
 }
 
-/* line 31, C:/wamp64/www/worldcuprugby/partials/_banner.scss */
+/* line 32, C:/wamp64/www/worldcuprugby/partials/_banner.scss */
 .banner-span {
   font-size: 3.5rem;
   color: red;
@@ -110,17 +111,18 @@ and open the template in the editor.
 /* line 11, C:/wamp64/www/worldcuprugby/partials/_maincontent.scss */
 #maincontent {
   float: left;
-  text-align: justify;
   margin: 20px 0 20px 0;
   padding: 10px;
   overflow: none;
   width: auto;
+  display: block;
 }
 
 @media (min-width: 1100px) {
   /* line 11, C:/wamp64/www/worldcuprugby/partials/_maincontent.scss */
   #maincontent {
     width: 750px;
+    text-align: justify;
   }
 }
 
@@ -135,26 +137,26 @@ and open the template in the editor.
 */
 /* line 11, C:/wamp64/www/worldcuprugby/partials/_sidebar.scss */
 #sidebar {
-  float: right;
-  height: 400px;
-  margin: 20px 10px;
-  padding: 10px;
-  border: 2px solid #f8f24d;
-  width: 87%;
-}
-
-@media (min-width: 768px) {
-  /* line 11, C:/wamp64/www/worldcuprugby/partials/_sidebar.scss */
-  #sidebar {
-    width: 93%;
-  }
+  display: none;
 }
 
 @media (min-width: 1100px) {
   /* line 11, C:/wamp64/www/worldcuprugby/partials/_sidebar.scss */
   #sidebar {
+    float: right;
     width: 250px;
+    height: 400px;
+    margin: 20px 10px;
+    padding: 5px;
+    border: 2px solid #f8f24d;
+    display: block;
   }
+}
+
+/* line 26, C:/wamp64/www/worldcuprugby/partials/_sidebar.scss */
+#sidebar img {
+  height: 200px;
+  width: 250px;
 }
 
 /*
@@ -188,28 +190,28 @@ and open the template in the editor.
     Created on : 01-Jan-2018, 18:24:02
     Author     : sripriya
 */
-/* line 11, C:/wamp64/www/worldcuprugby/partials/_navigation.scss */
+/* line 12, C:/wamp64/www/worldcuprugby/partials/_navigation.scss */
 #navigation {
   background-color: #333;
   border: 3px solid #f8f24d;
   margin-top: 20px;
   text-shadow: 0.1em 0.1em #333;
-  height: 210px;
+  height: 260px;
 }
 
 @media (min-width: 768px) {
-  /* line 11, C:/wamp64/www/worldcuprugby/partials/_navigation.scss */
+  /* line 12, C:/wamp64/www/worldcuprugby/partials/_navigation.scss */
   #navigation {
     height: 60px;
   }
 }
 
-/* line 24, C:/wamp64/www/worldcuprugby/partials/_navigation.scss */
+/* line 25, C:/wamp64/www/worldcuprugby/partials/_navigation.scss */
 #nav {
   list-style: none;
 }
 
-/* line 27, C:/wamp64/www/worldcuprugby/partials/_navigation.scss */
+/* line 29, C:/wamp64/www/worldcuprugby/partials/_navigation.scss */
 #nav ul {
   margin: 0;
   padding: 0;
@@ -217,16 +219,15 @@ and open the template in the editor.
 }
 
 @media (min-width: 768px) {
-  /* line 27, C:/wamp64/www/worldcuprugby/partials/_navigation.scss */
+  /* line 29, C:/wamp64/www/worldcuprugby/partials/_navigation.scss */
   #nav ul {
     display: inline-block;
   }
 }
 
-/* line 39, C:/wamp64/www/worldcuprugby/partials/_navigation.scss */
+/* line 41, C:/wamp64/www/worldcuprugby/partials/_navigation.scss */
 #nav li {
   font-size: 24px;
-  color: #817b7b;
   float: left;
   position: relative;
   height: 50px;
@@ -234,22 +235,83 @@ and open the template in the editor.
 }
 
 @media (min-width: 768px) {
-  /* line 39, C:/wamp64/www/worldcuprugby/partials/_navigation.scss */
+  /* line 41, C:/wamp64/www/worldcuprugby/partials/_navigation.scss */
   #nav li {
-    width: 150px;
+    width: 120px;
   }
 }
 
-/* line 56, C:/wamp64/www/worldcuprugby/partials/_navigation.scss */
-#nav a:link, #nav nav a:active nav a:visited {
+@media (min-width: 1100px) {
+  /* line 57, C:/wamp64/www/worldcuprugby/partials/_navigation.scss */
+  #nav li:last-child {
+    float: right;
+  }
+}
+
+/* line 65, C:/wamp64/www/worldcuprugby/partials/_navigation.scss */
+#nav a:link, #nav a:visited {
   display: block;
   color: #fff;
   text-decoration: none;
 }
 
-/* line 63, C:/wamp64/www/worldcuprugby/partials/_navigation.scss */
+/* line 72, C:/wamp64/www/worldcuprugby/partials/_navigation.scss */
 #nav a:hover {
   color: lightblue;
+}
+
+/* line 80, C:/wamp64/www/worldcuprugby/partials/_navigation.scss */
+.currentpage {
+  color: lightblue !important;
+}
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 03-Jan-2018, 21:44:13
+    Author     : sripriya
+*/
+/* Full-width input fields */
+/* line 2, C:/wamp64/www/worldcuprugby/partials/_input.scss */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+/* line 14, C:/wamp64/www/worldcuprugby/partials/_input.scss */
+button {
+  background-color: #2f4d7b;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+  width: 100%;
+}
+
+/* line 24, C:/wamp64/www/worldcuprugby/partials/_input.scss */
+button:hover {
+  color: lightblue;
+}
+
+/* Add padding to container elements */
+/* line 30, C:/wamp64/www/worldcuprugby/partials/_input.scss */
+.container {
+  padding: 16px;
+}
+
+/* line 34, C:/wamp64/www/worldcuprugby/partials/_input.scss */
+#regp {
+  text-align: center;
 }
 
 /*# sourceMappingURL=../styles/Styles.map */

@@ -10,17 +10,21 @@ and open the template in the editor.
 
 #sidebar{
     
-    float:right;
-    height: 400px;
-    margin: 20px 10px;
-    padding: 10px;
-    border: 2px solid $border-yellow;
-    width: 87%;
+    display:none;
     
-    @include atMedium{
-        width: 93%;
-    }
     @include atLarge{
+        float:right;
         width: 250px;
+            height: 400px;
+        margin: 20px 10px;
+        padding: 5px;
+        border: 2px solid $border-yellow;
+        display:block;
+        
+    }
+    
+    img{
+            height:200px;;
+            width:250px;
     }
 }
